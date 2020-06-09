@@ -38,8 +38,19 @@ Style/AndOr:
   Enabled: false
 Style/DefWithParentheses:
   Enabled: false
+Lint/RaiseException:
+  Enable: false
+Lint/StructNewOverride:
+  Enable: false
+Style/HashEachMethods:
+  Enable: false
+Style/HashTransformKeys:
+  Enable: false
+Style/HashTransformValues:
+  Enable: false
 Style/FrozenStringLiteralComment:
   EnforcedStyle: never
+
 
 Layout/HashAlignment:
   EnforcedColonStyle: key
