@@ -5,6 +5,12 @@
         Name: <%= user.name %>
         <span class="profile-link">
           <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
+          <% if  current_user != user %>
+            <% unless current_user.friend?(user) %>
+              <%= link_to 'Send Invitation', user_friendships_path(user), method: :post,class: 'profile-link' %>
+            <% end %> 
+          <% end %>
+          
         </span>
       </li>
     <% end %>
