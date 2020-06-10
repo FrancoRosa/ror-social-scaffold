@@ -20,7 +20,6 @@ class PostsController < ApplicationController
   private
 
   def timeline_posts
-    # @timeline_posts ||= Post.all.ordered_by_most_recent.includes(:user)
     posts = []
 
     posts += current_user.posts
