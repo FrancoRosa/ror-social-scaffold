@@ -23,7 +23,7 @@ class User < ApplicationRecord
   end
 
   def friend_requests
-    requests = inverse_friendships.collect { |friend| friend.friend unless friend.confirmed }
+    requests = inverse_friendships.collect { |friend| friend.user unless friend.confirmed }
     requests.compact
   end
 
@@ -34,8 +34,4 @@ class User < ApplicationRecord
   def friend?(user)
     friends.include?(user)
   end
-
-  # def not_friends
-    
-  # end
 end
