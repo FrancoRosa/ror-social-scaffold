@@ -5,7 +5,7 @@
         Name: <%= user.name %>
         <span class="profile-link">
           <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
-          <% if current_user != user %>
+          <% if current_user != user && !current_user.friend?(user) %>
             <% if current_user.pending_friends.include?(user) %>
               <span>(pending)</span>
             <% elsif current_user.friend_requests.include?(user) %>

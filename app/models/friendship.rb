@@ -11,6 +11,6 @@ class Friendship < ApplicationRecord
   private
 
   def complete_friendship
-    Friendship.create(user_id: friend.id, friend_id: user.id) if confirmed
+    Friendship.create(user_id: friend.id, friend_id: user.id, confirmed: true) if confirmed
   end
 end
