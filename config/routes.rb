@@ -7,9 +7,7 @@ Rails.application.routes.draw do
     resources :friendships
   end
 
-  get '/invitations', to: 'users#invitations', as: 'invitation' do
-    resources :friendships
-  end
+  get '/invitations', to: 'users#invitation', as: 'invitation'
   
   resources :posts, only: [:index, :create] do
     resources :comments, only: [:create]
