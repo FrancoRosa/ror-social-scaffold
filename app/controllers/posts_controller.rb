@@ -25,7 +25,7 @@ class PostsController < ApplicationController
     posts += current_user.posts
     current_user.friends.each { |friend| posts += friend.posts }
 
-    @timeline_posts ||= posts.uniq.sort { |a, b| a.created_at <=> b.created_at }.reverse
+    @timeline_posts ||= posts.sort { |a, b| a.created_at <=> b.created_at }.reverse
   end
 
   def post_params
