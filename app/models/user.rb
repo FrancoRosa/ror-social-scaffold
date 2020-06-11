@@ -13,7 +13,6 @@ class User < ApplicationRecord
 
   def friends
     friends = friendships.collect { |friend| friend.friend if friend.confirmed }
-    friends += inverse_friendships.collect { |friend| friend.user if friend.confirmed }
     friends.compact
   end
 
