@@ -1,10 +1,11 @@
 class Friendship < ApplicationRecord
   belongs_to :user
   belongs_to :friend, class_name: 'User'
+
+  before_update :complete_friendship
+
   validates :user, presence: true
   validates :friend, presence: true
-  validates :user, uniqueness: { scope: [:friend] }
-  before_update :complete_friendship
 
   private
 

@@ -29,9 +29,4 @@ describe Friendship do
     subject.user_id = nil
     expect(subject).to_not be_valid
   end
-
-  it 'is invalid if the friendship already exists' do
-    Friendship.create(user_id: User.first.id, friend_id: User.last.id)
-    expect(subject).to_not be_valid
-  end
 end
