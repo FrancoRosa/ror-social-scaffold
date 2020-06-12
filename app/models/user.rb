@@ -8,27 +8,22 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
 
-  has_many :friendships
-  has_many :inverse_friendships, class_name: 'Friendship', foreign_key: :friend_id
+  has_many :inverted_friendships, -> { where confirmed: false }, class_name: 'Friendship', foreign_key: 'friend_id'
+  has_many :friend_requests, through: :inverted_friendships, source: :user
 
-  def friends
-    friends = friendships.collect { |friend| friend.friend if friend.confirmed }
-    friends += inverse_friendships.collect { |friend| friend.user if friend.confirmed }
-    friends.compact
-  end
+  has_many :pending_friendships, -> { where confirmed: false }, class_name: 'Friendship', foreign_key: 'user_id'
+  has_many :pending_friends, through: :pending_friendships, source: :friend
 
-  def pending_friends
-    new_friends = friendships.collect { |friend| friend.friend unless friend.confirmed }
-    new_friends.compact
-  end
+  has_many :confirmed_friendships, -> { where confirmed: true }, class_name: 'Friendship'
+  has_many :friends, through: :confirmed_friendships
 
-  def friend_requests
-    requests = inverse_friendships.collect { |friend| friend.user unless friend.confirmed }
-    requests.compact
+  def friends_and_own_posts
+    users = friends << self
+    Post.where(user: users)
   end
 
   def confirm_friend(friend)
-    friendships.find_by(friend_id: friend[:id]).update(confirmed: true)
+    pending_friendships.find_by(friend_id: friend[:id]).update(confirmed: true)
   end
 
   def friend?(user)
