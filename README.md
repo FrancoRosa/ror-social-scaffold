@@ -2,6 +2,9 @@
 
 > This repo includes intial code for social media app with basic styling. Its purpose is to be a starting point for Microverse students.
 
+## Entity Relationship Diagram
+![stay in touch ERD](./docs/stay_in_touch_diagram.png)
+
 ## Built With
 
 - Ruby v2.7.0
@@ -9,7 +12,7 @@
 
 ## Live Demo
 
-TBA
+[![heroku image](https://user-images.githubusercontent.com/34653764/84539874-2fa7b200-acec-11ea-845d-850aeebf2b27.png)](https://zack-social-app.herokuapp.com/users/sign_in)
 
 
 ## Getting Started

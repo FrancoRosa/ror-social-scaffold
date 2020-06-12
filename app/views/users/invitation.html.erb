@@ -1,5 +1,8 @@
 <section class="users-section">
   <ul class="users-list">
+    <% if  @users.empty? %>
+      <h2 class="center">(There is no new invitations)</h2>
+    <% end %>
     <% @users.each do |user| %>
       <li>
         Name: <%= user.name %>
