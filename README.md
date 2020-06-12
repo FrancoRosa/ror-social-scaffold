@@ -12,7 +12,7 @@
 
 ## Live Demo
 
-TBA
+[![heroku image](https://user-images.githubusercontent.com/34653764/84539874-2fa7b200-acec-11ea-845d-850aeebf2b27.png)](https://zack-social-app.herokuapp.com/users/sign_in)
 
 
 ## Getting Started
